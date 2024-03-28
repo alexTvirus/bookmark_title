@@ -1,0 +1,70 @@
+﻿html css tip trick 
+
+IntelliSense for CSS class names in HTML
+
+HTML to CSS autocompletion
+
+Bootstrap 4, Font awesome 4, Font Awesome 5 Free & Pro snippets
+
+Zoom on Hover
+
+Scroll Snapping
+
+Initial Letter
+
+CSS Gradients
+
+https://viblo.asia/p/tuyen-tap-cac-tip-va-trick-khi-su-dung-javascript-RQqKLMp0Z7z
+
+https://cloudscape.design/
+
+https://topdev.vn/blog/useeffect-tu-a-toi-z
+
+https://viblo.asia/p/javascript-nang-cao-ky-14-BQyJKGPMJMe
+
+https://github.com/mystroken/Front-End-Performance-Checklist?tab=readme-ov-file#css
+
+https://github.com/ryanmcdermott/clean-code-javascript
+
+https://github.com/airbnb/javascript
+
+https://github.com/bradtraversy/design-resources-for-developers
+
+https://neumorphism.io/#e0e0e0
+
+https://larsenwork.com/easing-gradients/
+
+https://jonsuh.com/hamburgers/
+
+https://duypt.dev/tam-biet-dirty-code-trong-lap-trinh-js
+
+https://github.com/tvad911?tab=repositories
+
+https://blog.logrocket.com/dev
+
+https://2coffee.dev/
+
+https://www.youtube.com/@EasyFrontend/videos
+
+https://vnxf.vn/threads/han-che-su-dung-the-div.12948/
+
+https://github.com/Cosaslearning
+
+https://www.behance.net/
+
+https://dribbble.com/
+
+https://www.frontendmentor.io/challenges
+
+https://www.lundevweb.com/#google_vignette
+
+https://github.com/orgs/themewagon
+
+
+https://vntalking.com/react-su-dung-useeffect-hieu-qua.html
+
+https://2coffee.dev/bai-viet/closure-la-gi-tai-sao-toi-can-dung-closure
+
+https://niithanoi.edu.vn/17-y-tuong-du-an-web-voi-html-va-css-giup-up-level-ky-nang-lap-trinh-web-cua-ban.html
+
+https://manhdandev.com/laravel-socialite-login-with-linkedin.html?fbclid=IwAR2zEDQTLVO2q1-Cr6RH0MJSeRGADhpItLR7czPfBwCUYeJCF41nrzBkWRg

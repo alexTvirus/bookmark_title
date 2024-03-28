@@ -1,0 +1,10 @@
+﻿https://security.stackexchange.com/questions/169875/rbac0-rbac1-rbac2-rbac3-what-do-they-mean
+
+https://viblo.asia/p/bai-toan-phan-quyen-van-de-muon-thuo-1VgZvw9mlAw
+
+https://viblo.asia/p/mo-hinh-phan-quyen-acl-trong-spring-security-maGK7G1eKj2
+
+https://viblo.asia/p/database-scaling-ky-thuat-thuong-xuyen-duoc-trien-khai-trong-cac-du-an-lon-n1j4l6blLwl
+https://stackoverflow.com/questions/2468202/how-does-a-sql-query-work
+
+https://quantrimang.com/hoc/sql-server

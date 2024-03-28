@@ -1,0 +1,64 @@
+﻿cheat sheet
+
+https://overapi.com/php
+
+
+
+ham compact() là 1 hàm của php , input là các string ứng với các biến có sẳn, output là 1 mảng chứa các biến
+
+hàm withc() là hàm của laravel , dùng để truyền 1 mảng biến vào view
+
+nếu chỉ cần truyền biến đơn gian chỉ cần dùng compact
+
+
+khi dùng lệnh $query->paginate($limit); để phân trang, thì laravel sẽ tạo ra thêm 1 câu query để lấy tổng số record 
+>> ch
+
+
+
+foreach , trong php phai kiem tra bien co isset khong moi dc dung
+
+-----
+
+1. ? services tạo nhiều hàm , findbyAandBorC , finbyAandB , hay chỉ tạo 1 hàm findby($option,$limit,$orderBy) rồi bên trong tùy option mà tạo query
+	function($option , $orderBy){
+		// kiểm tra option có key gì thì tạo query tìm theo key đó
+		// kiểm tra orderBy theo cái gì thì tạo query theo orderBy đó
+	
+	}
+	
+
+ $query =
+            Hashtag::select('id')->whereIn('id', function ($query) use ($comic) {
+                $query
+                    ->select('id')
+                    ->from('chapters')
+                    ->where('status', 'free')
+                ;
+            });
+			
+	select `id` from `hashtags` where `id` in (select `id` from `chapters` where `status` = free) limit 10
+	
+	
+	khi dùng closue lồng bên trong whereIn thì $query-> , sẽ ko tạo câu lệnh join bảng
+	
+	nhưng nếu dùng với whereHas thì sẽ tạo câu lệnh join bảng
+	
+	
+	
+        $hashtags = Hashtag::select('id')->whereHas('comics', function ($hashtags) use ($comic) {
+            $hashtags->where('comic_id', $comic->id);
+        });
+
+
+        $query = ComicModel::whereExists(function ($query) use ($hashtags) {
+            $query->select('id')->from('hashtags')->whereIn('id', $hashtags);
+        });
+	
+ta có thể chia nhỏ các câu querry ra để nhìn cho đơn giản không nhất thiết phải viết lồng nhau rất khó quan sát
+như ở đây câu lệnh trên mục đích lấy các hashtags ra theo điều kiện , nhưng không gen ra sql liền
+
+mà cho làm đối số của câu lệnh phía dưới thì chương trình vẫn hiểu
+
+
+khi lay ket qua select bat buoc phai co orderby

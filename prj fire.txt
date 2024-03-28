@@ -1,0 +1,139 @@
+﻿
+
+1. thu nhỏ page hình thu nhỏ theo
+2. làm trang nhảy vào sau click
+	+ hình nền
+	+ hình character
+	+ hình các tập truyện
+
+
+
++ danh sách truyện, thông tin
+
++ đọc tiếp
+
+
++ chỉ để phần tóm tắt
+
++ tên chương cuối cùng
+
++ chỉ để mới cập nhật
+
+https://github.com/laravel/framework/discussions/45775
+
+https://github.com/laravel/framework/issues/22683
+
+https://stackoverflow.com/questions/48881049/how-to-add-a-model-with-custom-auto-increment-primary-key-laravel
+
+
+https://webtoon.kakao.com/content/%EC%9D%B4%EC%9B%83%EC%82%AC%EB%9E%8C/57
+
+https://webtoon.kakao.com/content/%EC%84%A0%EC%82%B0/3820
+
+https://webtoon.kakao.com/content/%EC%9E%A5%EA%B8%B0%EB%8C%80%EC%B6%9C/1216
+
+https://webtoon.kakao.com/viewer/%EC%9E%A5%EA%B8%B0%EB%8C%80%EC%B6%9C-003/31730
+
+https://firecomic.hioncoding.com/?
+
+https://webtoon.kakao.com/
+
+
+background:linear-gradient(to bottom, rgba(65, 59, 72, 0) 2%, rgb(65, 59, 72, 0.7) 50%,  rgb(65, 59, 72))
+
+rgb(65, 59, 72)
+
+- chỉ dung rgb(65, 59, 72) , va tu tạo background:linear-gradient(to bottom, rgba(65, 59, 72, 0) 2%, rgb(65, 59, 72, 0.7) 50%,  rgb(65, 59, 72)) (ok)
+
+- ten nho lai 50% index (ok)
+
+- lech loader (ok)
+
+- 1 chapter nhieu hinh , cho upload nhieu hinh , chỉ hiện nút bắt đầu nếu các ảnh đã được upload lên gg xong (ok)
+
+- bo goc ten chapter index (ok)
+
+- liên hệ giản ra ,cho dâu mui ten xo xuong (ok)
+	- tao dau mui ten cho expan,collap
+
+- tim font chu dep
+
+- kiem tra img trc, neu ko co img thi ko can chay cac lenh gg
+
+- loading img, dùng bg color
+
+
+
+- truyen index order by moi nhat (create date) ok
+
+
+
+
+- tên firecomic , viết hoa chữ F và viết liền ok
+
+- list chapter để lun tên chapter (ok)
+
+- order by list chapter mới nhất (create date) ok
+
+
+
+- chữ mới cập nhật, và tên chapter cho thẳng hàng ok
+
+- cái đồng hồ trang index , cho ngang hàng chữ ok
+
+- mới cập nhật >> border radius ok
+
+- logo , cho nhỏ lại 20% ok
+
+- trên mobile , luc touch thì trang xem trueeynj detail cho hiện lên thanh next back ok
+	lướt lên là hiện
+
+- trang xem truyên detail nút next back , blinh luận (xoa) , xoa nút play ok
+
+- trang xem truyên detail vướt icon like, xóa card ads ok
+
+
+
+- nếu chapter cuối cùng thì ko hiển thị next chapter ok
+
+- domain khotruyenfull ok
+
+- lỗi cchuyeenr chapter ok
+
+
+- trang detail truyện , xóa foooter ok
+
+- logo trên browser bị méo ok
+
+- dung bg color loading thay spin , hoac logo spin
+
+- cho set hashtag ok
+
+- link tiokto ok
+
+- resset luot view ok
+
+
+- nếu gặp 404 not found thì trả về link gì >> tra ve trang chu (production) ok
+
+
+-seo
+	- slug ten truyen= thay vi dung comic-code thì cho hiển thị slug = ten-truyen
+	- slug chapter = thay vì dùng kieu , ten-truyen-ten-chapter
+	
+	- hình ảnh đại diện cho từng chapter, từng bộ truyện khi search trên gg
+	- tải sitemapcho gg
+	
+	
+
+- 1 cày chay để lấy điểm đọc truyện
+	+ vượt link
+	+ 1 link ngày chỉ đc vượt x lần trên cùng máy
+	
+- 2 nạp tiền để lấy điểm đọc truyện
+
+- thanh tìm kiếm
+
+- hình là webp ok
+
+- nut back

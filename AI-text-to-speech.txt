@@ -1,0 +1,7 @@
+https://github.com/barttran2k
+
+https://github.com/thinhlpg/vixtts-demo
+
+https://github.com/JoHoop/audio-pitch-shifter-react
+
+https://huggingface.co/collections/vuxuanhoan/vietnam-tts-672b474d8a3022366d55906d

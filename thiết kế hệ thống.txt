@@ -1,0 +1,214 @@
+﻿1. ddd , clean architect , đều dựa trên kiến trúc nhiều tầng
+
+
+gửi đi 1 yêu cầu 
+	+ yêu cầu thực hiện việc gì đó
+	+ có thể đính kèm dữ liệu liên quan
+	+ gửi yêu cầu đến đúng nơi có thể xử lý
+	
+kích hoạt 1 sự kiện
+	+ chỉ gửi đi thông tin của sự kiện đó
+	+ ko yêu cầu xử lý gì, nơi bắt lấy sự kiện nếu đúng là nơi có thể xử lý thì mới xử lý
+	(gần giống throw exception, ném ra ngoại lệ thì có nhiều chỗ bắt ngoại lệ đó, nhưng chỉ nơi có khả năng xử lý mới xử lý ngoại lệ)
+	
+	
+	Work Queues vs Event Broker
+	
+	
+	
+	
+	
+giúp tăng hiệu suất xử lý bằng cách , thực hiện đồng thời nhiều xử lý
+
+	+ dùng đa luồng >> mỗi xử lý chạy trên 1 luồng , chạy liên tục xen kẽ nhau, và chức năng này đc cung cấp bởi hệ điều hành
+	hệ điều hành sẽ tạo bộ lập lịch, và sẽ cho phép các thread chứa các xử lý chạy xen kẽ nhau
+	
+	các xử lý sẽ ko cần phải chạy tuần tự và đợi cái này xong hẳn mới chạy cái khác
+	vì trong quá trình xử lý ko phải tất cả công việc đều xử dụng vi xử lý cpu, có thể nó chỉ sử dụng xử lý của card đồ họa, của ổ cứng, của usb
+	, của card mạng, nên lúc này tuy xử lý kia chiếm quyền chạy cpu nhưng lại ko sử dụng >> ko tối ưu hiệu suất 
+	nên nếu ta cho phép chạy xen kẽ thì sẽ tối ưu được hiệu suất của máy tính hơn, giảm thời gian nghỉ không của máy tính lại
+	
+	
+	+ chạy bất đồng bộ , đây là 1 khái niệm ám chỉ việc, các xử lý ko chạy tuần tự hết cái này mới đến cái kia, mà là cái nào có thể chạy thì chạy
+	ko thể chạy thì đợi , mục đích cũng là tối ưu hiệu suất của máy tính
+		- dùng kĩ thuật hàng đợi để đạt được sự bất đồng bộ, ở đây không cần tạo nhiều thread như trên, và ko phụ thuộc vào hệ điều hành,
+		lập trình viên sẽ sử dụng 1 hàng đợi để đẩy xử lý vào, các xử lý đc đẩy vào hàng đợi này sẽ không cần thực thi ngay lập tức, nó sẽ được thực
+		thi ko tuần tự với các xử lý khác, sẽ có 1 cơ chế để lấy các xử lý đó ra xử lý và trả kết quả ngược lại cho chương trình, vào 1 thời điểm bất
+		kì nào đó khi mà nó thực hiện xong xử lý đó, ở đây gọi là các hàm callback, các hàm này sẽ đc gọi sau khi xử lý kia đc thực hiện
+		
+		
+	+ các message handler như Work Queues vs Event Broker , cũng sử dụng cơ chế hàng đợi để thực hiện việc bất đồng độ message, nó cứ tiếp nhận massage
+	, và lưu vào hàng đợi rồi từ từ thực thi message , khi nào có kết quả thì nó gọi và trả kết quả lại
+	
+	
+	
+	
+	khi người ta nói đến server single thread, là ý người ta đang nói đến việc, cứ 1 request gửi đến thì nó sẽ tạo ra 1 thread để xử lý, 10 request thì
+	tạo 10 thread , hay nó chỉ dùng 1 thread để đón các request
+	
+	
+	
+	
++ một số tính năng người ta mong đợi ở hệ thống lớn
+
+	1. nhiều lượt truy cập cùng lúc, 1s vài triệu lượt truy cập
+		- phải xem xét các chức năng trong trường hợp 1 lúc nhiều truy cập thì nó sẽ hoạt động ra sao (vd: cùng lúc nhiều người tạo đơn đặt hàng thì sẽ ra sao)
+		- phải xem xét hệ thống chịu tải được bao nhiêu (xem thử ram, cpu chịu được bao nhiêu khi nhiều người cùng truy cập)
+	2. server ổn định, live liên tục, thằng server này bị crash thì có thằng server khác thay thế, ko để server sập hẳn
+		- tạo các server clone để đề phòng, nhưng phải đảm bảo các server này tương đương với server đang sống
+	3. thời gian trả kết quả nhanh, hoặc ổn ko đc quá lâu , 
+		- thường dùng cache, cache ở mọi nơi có thể cache, từ server xử lý, đến database, đến trong code, đến các gateway
+	4. các thành phần của hệ thống có khả năng đc mở rộng dễ dàng về sau 
+		-(vd: các server xử lý có thể mở rộng , ví dụ 1 server max là xử lý 1tr request 1 lúc
+		sau này quy mô kinh doanh lớn lên, yêu cầu phải xử lý 10tr request 1 lúc thì, phải có khả năng mở rộng server 1 cách dễ dàng nhất), giải pháp hiện tại
+		thường là dùng microservice cho mọi thành phần, sau này muốn mở rộng thành phần nào thì cứ thêm service vào , và microservice thường đi kèm với
+		message queue bởi vì các service phải giao tiếp với nhau , và vì sao ko chọn api mà chọn queue bởi vì các service này muốn hoạt động bất đồng bộ, các service
+		này không muốn quá phụ thuộc vào nhau ( phải biết uri api, phải biết cấu trúc api của nhau ...), thì dùng queue bọn nó chỉ phụ thuộc vào queue , và dùng mô hình
+		hướng sự kiện event driven, thằng nào phát sinh cái gì cứ phát ra sự kiện rồi lưu vào queue , thằng khác tới lấy thông tin sự kiện và xử lý
+		- giải pháp này sẽ gặp các khó khăn nào?
+			- đồng bộ, và xử lý dữ liệu, các dữ liệu trên các service có liên quan đến nhau thì phải làm sao để đảm bảo nó ghi vào db đúng và đồng bộ
+			(vd: service A gọi đến B , B gọi đến C , khi hoàn thành xong hết A,B,C mới đc ghi dữ liệu, nếu 1 trong các service A,B,C lỗi thì ko đc lưu)
+			- 1 service bị lỗi thì kéo theo các service liên quan ko chạy đc
+			- 
+	
+	5. tránh các nút thắt cổ chai , vì muốn đáp ứng đc truy cập cùng lúc nhiều thì phải chấp nhận cho người dùng cùng lúc truy cập đồng thời vào dữ liệu
+		
+		- nút thắt thường xảy ra ở việc ghi dữ liệu vào database, vì lúc này bắt buộc phải đảm bảo toàn vẹn dữ liệu nên sẽ phải khóa bảng, cột , rồi mới ghi,
+		nên nếu 1 lúc nhiều người cùng truy cập dễ bị nút cổ chai ở đây
+		
+	6. database quá lớn, việc truy xuất mất quá nhiều thời gian
+	
+		- 1 hệ thống quá nhiều người dùng thì database sẽ rất lớn, lên đến cả tỷ record , lúc này cần thiết kế, và truy xuất db sao cho, thời gian phản hồi lại cho người
+		dùng là nhanh nhất có thể
+	
+	
+	
+	
+	
++ làm sao để tránh đc sai lầm khi thiết kế , xây dựng hệ thống >>
+
+	- ko thể hoàn toàn tránh đc, kiểu gì cũng sẽ có 1 người tiên phong đi đầu, và người này sẽ vấp phải sai lầm
+	từ những sai lầm đó người ta vượt qua và tìm đc biện pháp xử lý hợp lý
+	
+	- cho nên việc học hỏi từ những dự án đi trước sẽ giúp tránh đc 1 phần nào sai lầm, và thường sẽ phải trả tiền
+	để họ truyền đạt kinh nghiệm đó cho
+	
+	- ngay cả trong việc code và xử lý, thì học chỉ giúp ta có thêm kiến thức đó, từ những người đi trước, giúp ta tránh
+	được hoặc xử lý đc phần lớn khó khăn, còn lại sẽ chắc chắn phải gặp những khó khăn mà ta chưa bao giờ đối mặt và ta bắt buộc
+	phải chấp nhận thua cuộc
+	
+	
+	
++ lập trình web, có gặp trường hợp mà số lượng item quá lớn ko?
+	+ mỗi request từ user gửi lên , đều yêu cầu phải phản hồi trong thời gian ngắn nhất, nên sẽ hạn chế , hoặc ko có chuyện làm việc với cả triệu phần tử 1 lúc như leetcode
+	+ số lượng item nhiều sẽ xuất phát từ database 	>>> phải xử lý làm sao để số lượng item get lên từ database là ít nhất, thường sẽ phân trang
+													>>> vì item dưới db rất lớn nên khi thiết kế và viết querry truy xuất nên tính toán xem dữ liệu phình to ra
+													thì thời gian truy xuất có ổn không
+	+ nên bài toán tối ưu lại nằm ở database chứ ko nằm trên application
+	
+	
++ dùng logic tam đoạn luận + tiền đề để đưa ra phán đoán
++ dùng tổ hợp , đển xem xét đã xét hết trường hợp hay chưa, hoặc để xem thử cách đó có ổn không, nếu có quá nhiều trg hợp phải kiểm tra thì dùng cách khác
+	
++ quy nạp : đưa ra 1 phán đoán, dựa vào sự tương đồng của 1 tập các thành viên có cấu tạo tính chất giống nhau, ta sẽ đưa ra phán đoán là
+			tất cả thành viên mà có cấu tạo như vậy thì sẽ có tính chất như vậy
+			vd: 
+				thành viên 1 - có tính chất x 	( ở đây ta đưa ra 1 cách thức nào đó để chứng mình đều này chắc chắn đúng )
+				thành viên 3 - có tính chất x	( ở đây ta đưa ra 1 cách thức nào đó để chứng mình đều này chắc chắn đúng )
+				thành viên 4 - có tính chất x	( ở đây ta đưa ra 1 cách thức nào đó để chứng mình đều này chắc chắn đúng )
+				
+				......
+				
+				ta đưa ra suy đoán thành viên 10 cũng sẽ có tính chất dù ko cần chứng minh bằng thực nghiệm
+				vì : thành viên 10 có cùng cấu tạo , thuộc tính, hành vi như các thành viên kia
+				điểm quan trọng nhất của pp quy nạp, là ta phải đảm bảo đc mọi thành viên đều có mô hình cấu tạo
+				tương đồng nhau, ko có thành viên biến dị
+				
+
++ lập trình:
+					
+	- mô phỏng lại quá trình vận động của 1 hệ thống (ko quan tâm input, output, chỉ là mô phỏng lại quá trình hoạt động)
+	- biến đổi , từ cái này thành cái kia, theo 1 quy luật biến đổi nào đó , cái này = input, cái kia = output (với bất kì input nào, ta cũng
+	có thể tạo ra output tương ứng , và ứng với quy luật nào đó)
+	
++ backend :
+
+	- gồm xây dựng server và phần xử lý nghiệp vụ
+	- nghiệp vụ này có thể là:
+		+ cung cấp dịch vụ AI như giải captcha, chatbot , orc
+		+ cung cấp dịch vụ lưu trữ ảnh, lưu trữ file
+		+ hoặc đơn thuần là lưu trữ, xử lý , hiển thị thông tin như các ứng dụng đọc báo, xem tin tức, đọc truyện, xem film
+		+ hoặc các ứng dụng như thương mại điện tử , mua bán trực tuyến ( bao gồm nhiều dịch vụ nhỏ bên trong )
+		+ hoặc ứng dụng về ngân hàng
+		+ hoặc ứng dụng về đặt xe, đặt vé
+		+ ứng dụng về chứng khoáng
+	- xây dựng server : thì liên quan nhiều đến kĩ thuật hơn, và có thể áp dụng chung cho nhiều dự án khác nhau
+		+ xây dựng web server
+		+ xây dựng microservice server
+		+ xây dựng loadbalance server
+		+ xây dựng 1 hệ thống liên server
+		
+	>> vậy backend ngoài phần kĩ thuật là xây dựng server, thì phần nghiệp vụ sẽ chia làm nhiều mảng khác nhau tùy thuộc vào nghiệp vu mà 
+	server đó sẽ xử lý , phần nghiệp vụ này là vô vàng và ko bao giờ học hết được , mỗi nghiệp vụ lại cần những kĩ thuật khác nhau
+	
+	nên lập trình viên sẽ tập trung vào phần kĩ thuật server, và phần nghiệp vụ sẽ là kinh nghiệm thêm càng làm đc nhiều hệ thống có nghiệp vụ
+	khác nhau thì càng có cơ hội việc làm cao
+				
+
+vì vậy mảng cntt rất rộng nên ta nên tự định vị scope của mình là gì sẽ giải quyết và cần học những kiến thức gì 
+	vd : ltv web backend : thì cần học về xây dựng server , và xử lý nghiệp vụ , và nghiệp vụ sẽ là những nghiệp vụ nào
+	xây dựng server gì đáp ứng nhu cầu như thế nào 
+	hoặc ltv AI : thì sẽ xử lý vấn đề gì ...
+
+
+
++ nếu ko thấy được bất cứ dấu hiệu nào, thì	
+
+	+ nếu người ta cho các input và output , thì ta dựa vào các bộ in-output này tìm ra quy luật
+	
+	+ thử sai , tạo ra các bộ input , output và tìm quy luật, rồi quy nạp
+	
++ khi học giải thuật cần xác định , mình sẽ thu hoạch đc gì?
+
+	- kiến thức liên quan đến kĩ thuật sử dụng cấu trúc dữ liệu, hoặc kĩ thuật sử dụng biến , hàm ...
+	- kiến thức liên quan đến chiến lược phân tích bài toán
+	- kiến thức liên quan đến đặc thù của từng bài toán ( cái này gần giống với business bên web , tức là mỗi dạng bài toán sẽ có cách giải riêng, với
+	dạng kiến thức này , ko cần nhớ quá nhiều vì, nó sẽ khác nhau trên từng loại bài toán, tính tổng quát và thừa kế cho các bài toán sau ko cao,
+	vd: bài toán liên quan nhiều đến toán cần áp dụng nhiều công thức toán , bài toán liên quan đến việc thao tác với bit byte để tối ưu , hoặc bài toán
+	phải ngồi mò rất nhiều bước để xử lý từng chi tiết ..., thì từng chi tiết của các dạng bài toán này sẽ ko xuất hiện nhiều trên các bài toán khác
+	nhiều khi nó chỉ tồn tại trên mỗi bài toán đó thôi)
+	
+	
+	
++ giải thuật >> xử lý ở dạng micro , xử lý chi tiết, từng hàm, từng biến, từng vòng lặp
++ thiết kế hệ thống >> xử lý dạng marco , rộng hơn , xem vấn đề lớn là tổng hợp những vấn đề nhỏ, lắp ráp nó lại để xử lý vấn đề
+
+
+
+domain layer
+
+
+https://stackoverflow.com/questions/59129465/laravel-views-folder-structure-for-different-designs
+
+https://github.dev/kasramp/spring-kafka-test
+
+https://github.com/Tung-ht/Toby.me-BE
+
+https://topdev.vn/blog/so-sanh-nginx-va-apache-2
+
+https://viblo.asia/p/ronin-engineer-tich-hop-voi-vnpay-nhu-the-nao-MG24B6dB4z3
+
+https://topdev.vn/blog/thiet-ke-service-co-tai-ghi-cao-khong-gay-tranh-chap-tai-nguyen
+
+https://topdev.vn/blog/deploy-ung-dung-load-balancer-su-dung-nginx-voi-docker
+
+Best System design resources for 204 
+1. ZTM - https://bit.ly/3YpWu4q
+2. ByteByteGo - https://bit.ly/3P3eqMN
+1. Grokking the System Design - https://bit.ly/3ckZlsl
+3. Pragmatic Design - https://bit.ly/3vFNPid
+4. Software Design  - https://bit.ly/3BxMXzr
+5. Software Architecture 101 -  https://bit.ly/3pzJCJh
+6. Modern design - https://bit.ly/3OQKX8B
+7. DesignGuru - https://bit.ly/3pMiO8g
+8. Meetapro - https://bit.ly/48UAXpJ
