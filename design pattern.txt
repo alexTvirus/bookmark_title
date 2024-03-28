@@ -1,0 +1,77 @@
+﻿1. ctr đã tạo và chạy với code cũ
+
+2. nếu có yêu cầu mở rộng code thì ko phải sửa code cũ ( vì có khả năng code cũ rất nhiều và ko thể sửa hết)
+(thử viết code hiện tại, sau đó tìm cách thay đổi hoặc mở rộng thêm chức năng, xem thử có phải sửa code cũ ko?)
+
+3. xác định những thứ cố định
+
+4. xác định những thứ sẽ thay đổi
+
+
++	stragy
+
+thừa kế : trả lời câu hỏi lớp nào sẽ gọi hàm
+
+kết tập : trả lời câu hỏi phiên bản hàm nào sẽ đc gọi
+
+nội dung hàm thay đổi liên tục, thay đổi hoàn toàn nội dung hàm 
+
++	decorate
+
+nội dung hàm thay đổi, nhưng sự thay đổi này có luật là, nội dung hàm = tổng các sự thay đổi (tức là các hàm đã viết trc đó vẫn tiếp tục chạy, và chỉ thêm vào
+các hàm mới, là hàm đc gọi sẽ là tổng của cả hàm mới và cũ)
+
+cấu trúc đối tượng thay đổi liên tục
+
++	factory method
+
+quá trình tạo đối tượng, có thêm logic ( tạo đối tượng dựa vào logic nào đó) , nội dung logic này thay đổi
+
++	factory abstract
+
+gần tương tự factory method
+
++ singleton/flyweigt
+
+tăng hiệu suất của chương trình, giảm việc tốn bộ nhớ
+
+
+-Chain of Responsibility
+Khắc phục việc ghép cặp giữa bộ gởi và bộ nhận thông điệp; Các đối tượng nhận thông điệp được kết nối thành một chuỗi và thông điệp được chuyển dọc theo chuỗi nầy đến khi gặp được đối tượng xử lý nó.Tránh việc gắn kết cứng giữa phần tử gởi request với phần tử nhận và xử lý request bằng cách cho phép hơn 1 đối tượng có có cơ hội xử lý request . Liên kết các đối tượng nhận request thành 1 dây chuyền rồi “pass” request xuyên qua từng đối tượng xử lý đến khi gặp đối tượng xử lý cụ thể.
+
+-Interpreter
+Hỗ trợ việc định nghĩa biểu diễn văn phạm và bộ thông dịch cho một ngôn ngữ.
+-Iterator
+Truy xuất các phần tử của đối tượng dạng tập hợp tuần tự (list, array, …) mà không phụ thuộc vào biểu diễn bên trong của các phần tử
+
+Memento
+
+Composite
+
+
+prototype
+
+
+
+
+mỗi spec ứng với  query nghiệp vụ (vd: userSpecGetName , userSpecGetOrder ...) ? nếu nhiều query có chung 1 entity chính như vậy ta phải làm sao?
+
+
+
+
+tái sử dụng code logic, bằng cách viết nó vào 1 file, khi nào sài lại thì đọc file đó ra
+còn như js sử dụng callback, nếu cần sử dụng lại logic đó thì lại copy paste >> sai
+
+
+
+mở rộng ( thêm vào code cũ) bằng cách : a().b().c()
+hay
+bằng cách tạo class mới và thừa kế ?
+
+
+
+
+
+
+
+

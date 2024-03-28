@@ -1,0 +1,124 @@
+﻿https://www.youtube.com/@hoigreen/playlists
+
+https://www.youtube.com/@thientamnguyen.94/playlists
+
+https://www.youtube.com/watch?v=0KU-7To6mL4&list=PLrELTMOV6omwXn_vMKMlGu3KJcMq2_liV&ab_channel=BuiTheTam
+
+https://www.youtube.com/watch?v=DSwj2VbEGxI&list=PLMbuMydSxMKwRk5Ohyqf2idfbyuZTpj4p&ab_channel=L%E1%BA%ADpTr%C3%ACnhB2A
+
+https://www.youtube.com/watch?v=7AltV5cWroo&list=PL_Jr7CMg2lDKWtwQR220B_8umfQwJb6pD&index=4&ab_channel=Th%E1%BA%AFngNguy%E1%BB%85n
+
+https://www.youtube.com/watch?v=B1CXhuY11FM&list=PLNRjqDBIJbNUcmrMpGeCNCDy4PeNyFS8V&ab_channel=E-LearningPTIT
+
+https://www.youtube.com/@nghethuatlaptrinh3135/playlists
+
+https://www.youtube.com/@truongxuannam/videos
+
+https://www.youtube.com/@topalgo9543/videos
+
+https://www.youtube.com/watch?v=xN2Tb0Jni7w&list=PLNYd0dgTx2h1WUBSJYsQP6mvdbebaD5Kp&ab_channel=ONLINEKMA
+
+https://www.youtube.com/watch?v=sHxu9hs26UM&list=PLa0PSgLon8z1CvH1v5X6b9JFFmhXjtP2M&ab_channel=TuanBK2021
+
+https://www.youtube.com/watch?v=oV2HDKJ6pos&list=PLG92h61c7jzCvSfLQkbsn_FE9_hRZWAEZ&ab_channel=AI-MLTi%E1%BA%BFngVi%E1%BB%87t
+
+https://www.youtube.com/watch?v=eT9Epyf0XLM&ab_channel=28tech
+
+https://www.youtube.com/watch?v=sHxu9hs26UM&list=PLa0PSgLon8z1CvH1v5X6b9JFFmhXjtP2M&ab_channel=TuanBK2021
+
+https://www.youtube.com/watch?v=HxsyZp_OgHw&list=PLzT98eUM-jq8o9NGkmaHrKvC1EvcFPGSd&ab_channel=IT
+
+https://www.youtube.com/watch?v=q4_ow2QTsjs&list=PLG92h61c7jzD_ay8XlyoXA93dOrAf4hcm&ab_channel=AI-MLTi%E1%BA%BFngVi%E1%BB%87t
+
+
+
+
+https://voz.vn/t/leetcode-moi-ngay.568742/page-64
+
+
+dãy con có tính chất X
+tháp hà nội
+sudoku
+xếp hình
+cái túi
+n con hậu
+người du lịch và 7 cây cầu ( đồ thị)
+
+chuyển dạng để trị:
+
+chuyển đề bài về dạng toán, hoặc dạng đồ thị, dạng cây nhị phân để giải
+
+chia để trị, chia vấn đề ra làm nhiều bài toán con, và phải giải lần lượt từng bài, rồi ghép lại tạo nên giải pháp
+giảm để trị, giảm vấn đề từ lớn xuống nhỏ dần, và chỉ giải quyết vấn đề sau khi giảm (vd : tìm kiếm nhị phân, chỉ giải quyết 1/2 vấn đề sau khi giảm, 1/2 còn lại ko giải quyết)
+
+các bài có thể chuyển về đồ thị sẽ có đặc tính sau:
+
+1. bài toán có thể mô hình hóa thành các đỉnh và các cung
+2. cần tìm phương án, tối ưu,tốt nhất , xấu nhất
+3. cần tìm mối quan hệ giữa các đỉnh, các đỉnh có liên kết với nhau không? , có xuất hiện đỉnh nào cô độc ko? có xuất hiện chu trình giữa các đỉnh ko?
+4. tìm con đường đi từ đỉnh này đến đỉnh khác
+
+các dạng bài toán mà tạo ra nhiều tổ hợp trạng thái, và mỗi tổ hợp trạng thái sẽ có nhiều trạng thái, và mỗi tổ hợp trạng thái có thể là 1 đáp án khả dĩ của
+đề bài >>> nói chung đa phần các bài có thể giải bằng cây (cây nhị phân, cây đệ quy), hoặc các bài vét cạn, đệ quy có thể mô tả bằng cây thì đều có thể mô tả
+bằng đồ thị
+
+
+Brute force là một kỹ thuật thiết kế thuật toán trong đó bạn thử tất cả các khả năng có thể và chọn ra cái tốt nhất theo tiêu chí đánh giá. 
+
+Backtracking là một cải tiến của brute force, trong đó bạn sử dụng những điều kiện để loại bỏ những khả năng không hợp lệ trước khi thử hết tất cả
+Nó duyệt cây trạng thái theo chiều sâu và quay lui khi nhận ra rằng không thể xây dựng được lời giải từ trạng thái hiện tại. Nó lặp lại quá trình này cho đến khi tìm được lời giải hoặc duyệt hết tất cả các khả năng
+
+Nhánh cận là một kỹ thuật thiết kế thuật toán để tìm ra lời giải tối ưu cho nhiều bài toán tối ưu hóa, đặc biệt là trong tối ưu hóa rời rạc và tổ hợp. Nó có thể duyệt cây trạng thái theo nhiều cách, như chiều sâu, chiều rộng, hay theo chi phí nhỏ nhất. Nó sử dụng một hàm cận để cắt bỏ những nhánh không thể dẫn đến lời giải tốt hơn so với lời giải đã có
+
+
+
+
+
+
+
+
+- tìm trong mảng đề cho, phần tử, hoặc chuỗi phần tử ( nhiều phần tử) có tính chất, có quy luật như đề cho
+	+ mảng có đối xứng ko
+	+ mảng có chứa ptu trùng ko
+	+ mảng có chứa số nguyên tố ko
+	+ liệt kê các ptu lặp
+	+ liệt kê số nguyên tố trong mảng
+	+ tìm phần tử lớn nhất/ nhỏ nhất + các điều kiện khác ...
+	+ mảng con tăng dài nhất
+	+ mảng con tăng có tổng lớn nhất
+
+- biến đổi 1 phần từ, hoặc nhiều phần tử , sao cho mảng kết quả đạt được mục tiêu đề cho (làm thay đổi giá trị, hoặc vị trí của phần tử mảng)
+	+ sắp xếp
+	+ chèn
+	+ xóa
+	+ sửa
+	+ đảo mảng
+	
+
+- ko dùng ctdl : thường là tính toán, biến đổi giá trị đầu vào theo 1 quy luật nào đó để nhận đc 1 đầu ra mong muốn
+	+ cho các giá trị đầu vào, cho 1 luật biến đổi, cần đầu ra ứng với luật, thường phân tích luật và làm tuần tự theo luật là có đầu ra
+	
+	
+	những vấn đề khó thường có dạng hàm phụ thuộc nhiều biến , mỗi tổ hợp biến là 1 đáp án có thể xảy ra :
+	vd:
+	
+	ax + by + cz + dt = 0 hoặc ax + by + cz + dt >= 0
+	
+	hoặc để đến đáp án cần thực hiện nhiều bước, tại mỗi bước lại phải chọn nhiều lựa chọn, và ko biết phải chọn lựa chọn nào, khó thử sai, và khó tiên đoán kết quả
+	
+	
+	những vấn đề đơn giản làm tuần tự là ra sẽ chỉ có dạng:
+	
+	ax +b =0
+	
+	hoặc để đến đáp án thì cũng làm nhiều bước , nhưng tại mỗi bước chỉ có 1, hoặc 2 lựa chọn , và dễ thử sai
+	
+	
+	
+1. các cấu trúc dữ liệu cơ bản
+2. các đặc tính của từng cấu trúc đó
+	+ tổ chức bộ nhớ ( vd: mảng là ô nhớ liên tiếp, dslk là các vùng nhớ móc nối )
+	+ các quy tắc hoạt động riêng (vd: mảng truy xuất bất kỳ, stack vào trc ra sau, queue vào sau ra trc, dslk luôn duyệt từ đầu)
+	+ các bài toán đặc trưng (vd: stack , queue bài toán liên quan đến tiền tố, hậu tố, biểu thức, cây liên quan đến tìm kiếm )
+	+ một số trick mẹo (vd: mảng dùng 2 con trỏ để tìm nhanh hơn, hoặc sắp xếp để tìm kiếm nhị phận, hoặc dùng hash map để giảm thời gian tìm =1 )
+	

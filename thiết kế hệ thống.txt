@@ -1,0 +1,21 @@
+﻿1. ddd , clean architect , đều dựa trên kiến trúc nhiều tầng
+
+
+domain layer
+
+
+https://github.dev/kasramp/spring-kafka-test
+
+https://github.com/Tung-ht/Toby.me-BE
+
+
+Best System design resources for 204 
+1. ZTM - https://bit.ly/3YpWu4q
+2. ByteByteGo - https://bit.ly/3P3eqMN
+1. Grokking the System Design - https://bit.ly/3ckZlsl
+3. Pragmatic Design - https://bit.ly/3vFNPid
+4. Software Design  - https://bit.ly/3BxMXzr
+5. Software Architecture 101 -  https://bit.ly/3pzJCJh
+6. Modern design - https://bit.ly/3OQKX8B
+7. DesignGuru - https://bit.ly/3pMiO8g
+8. Meetapro - https://bit.ly/48UAXpJ
