@@ -1,6 +1,8 @@
-
+﻿
  tìm hiểu kĩ thuật viết code  
  1. clean code  
  2. code convension  
  3. design pattern  
  4. mẹo , trick , nguyên tắc cơ bản khi viết code
+
+e
